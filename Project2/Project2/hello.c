@@ -5,7 +5,7 @@
 //int GetSum(int num1, int num2);
 //int GetFectorial(int num);
 
-int main(void) {
+//int main(void) {
 
 	//char arr[10] = "Hello";
 	//printf("%d\n", sizeof(arr));
@@ -226,5 +226,5 @@ int main(void) {
 	//		sum = sum * i;
 	//	}
 	//	return sum;
-	
-}
+	//
+	//}
