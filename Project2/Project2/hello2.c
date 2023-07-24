@@ -39,7 +39,7 @@
 //	sun, mon, tue, wed, thu, fri, sat
 //};
 
-int main(void) {
+//int main(void) {
 
 	// 1번 문제
 	//int num;
@@ -79,21 +79,21 @@ int main(void) {
 	//}
 	//
 	//printf("%d", ch);
-	
+	// 
 	// 3번 문제
-	char arr[20];
-	char length[128] = { 0 };
-	printf("문자열 입력 : ");
-	gets(arr);
-	for (int i = 0; i < strlen(arr); i++) {
-		length[arr[i]]++;
-	}
-	for (int i = 0; i < sizeof(length); i++)
-	{
-		if (length[i] != 0) {
-			printf("%c의 수는 : %d  ", i, length[i]);
-		}
-	}
+	//char arr[20];
+	//char length[128] = { 0 };
+	//printf("문자열 입력 : ");
+	//gets(arr);
+	//for (int i = 0; i < strlen(arr); i++) {
+	//	length[arr[i]]++;
+	//}
+	//for (int i = 0; i < sizeof(length); i++)
+	//{
+	//	if (length[i] != 0) {
+	//		printf("%c의 수는 : %d  ", i, length[i]);
+	//	}
+	//}
 	
 	// 4번 문제
 
@@ -174,7 +174,7 @@ int main(void) {
 	//scanf("%d %d", &p[1].x, &p[1].y);
 	//printf("두번째 점 출력 :  %d %d\n", pt->x, pt->y);
 
-	return 0;
+	//return 0;
 	//float num;
 	//
 	//printf("입력한 반지름 : ");
@@ -239,7 +239,7 @@ int main(void) {
 	//printf("%d\n", arr[3]);
 	// 
 
-}
+//}
 
 //int GetFactorial(int num) {
 //	int output = 1;
