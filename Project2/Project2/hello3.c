@@ -36,6 +36,7 @@ int main(void) {
 	char subject[20];
 	int score;
 	struct ListNode* next;
+	int n;
 	//STUDENT std[MAX_STUDENT];
 	//int i;
 	//FILE* fp = NULL;
@@ -141,6 +142,16 @@ int main(void) {
 			gets(subject);
 			Print_Search(NewList, subject);
 			break;
+		case 5: // n번째 추가
+			Print_All(NewList);
+			printf("몇번째에 추가 하시겠습니까(번호 입력) : ");
+			scanf("%d", &n);
+			N_Add();
+			break;
+		case 6: // n번째 삭제
+
+			break;
+		case 7: // n번째 수정
 		}
 	}
 	return 0;
@@ -177,6 +188,22 @@ void Add_Rear(LIST* LinkedList, char* new_subject, int new_num) {
 		Newnode->score = new_num; //점수 추가
 	}
 }
+
+void N_Add(LIST* LinkedList, char* new_subject, int new_num, int n) {
+	LIST* temp = LinkedList;
+
+
+
+}
+
+void N_Delete() {
+
+}
+
+void N_Update() {
+
+}
+
 void Print_All(LIST* LinkedList) {
 	LIST* temp = LinkedList;
 	while (temp)
