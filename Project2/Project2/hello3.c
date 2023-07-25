@@ -9,14 +9,15 @@
 //#define MAX_STUDENT 5
 typedef struct ListNode
 {
-	//char subject[20];
+	char subject[20];
 	int score;
 	struct ListNode* next;
 }LIST;
 
-void Add_Rear(LIST* LinkedList, int new_num);
-//, char* new_sub[20]
+void Add_Rear(LIST* LinkedList, char* new_subject, int new_num);
 void Print_All(LIST* LinkedList);
+void Delete_Ren(LIST* LinkedList);
+int Print_Search(LIST* LinkedList, char* search_sub);
 LIST* MakeLinkedList();
 //typedef struct student {
 //	 	char name[20];
@@ -32,7 +33,7 @@ LIST* MakeLinkedList();
 //void PrintPoint(POINT* p);
 int main(void) {
 	int choose = 1;
-	//char subject[20];
+	char subject[20];
 	int score;
 	struct ListNode* next;
 	//STUDENT std[MAX_STUDENT];
@@ -118,19 +119,27 @@ int main(void) {
 	LIST* NewList = MakeLinkedList();// 리스트 생성
 	while (choose != 0)
 	{
-		printf("기능 선택 -0번 종료 -1번 추가 -2번 출력 : ");
+		printf("기능 선택 -0번 종료 -1번 추가 -2번 출력 -3번 삭제 -4번 선택조회: ");
 		scanf("%d", &choose);
+		getchar();
 		switch (choose)
 		{
 		case 1: //추가
-			//printf("과목 : ");
-			//gets(subject);
+			printf("과목 : ");
+			gets(subject);
 			printf("점수 : ");
 			scanf("%d", &score);
-			Add_Rear(NewList, score);
+			Add_Rear(NewList, subject, score);
 			break;
 		case 2: // 출력
 			Print_All(NewList);
+			break;
+		case 3: // 삭제
+			Delete_Ren(NewList);
+			break;
+		case 4: // 선택조회
+			gets(subject);
+			Print_Search(NewList, subject);
 			break;
 		}
 	}
@@ -140,17 +149,18 @@ int main(void) {
 LIST* MakeLinkedList() { //LinkedList 생성
 	LIST* node = (LIST*)malloc(sizeof(LIST));
 	//strcpy(node->subject, NULL);
+	node->subject[0] = "/0";
 	node->score = NULL;
 	node->next = NULL;
 	return node;
 }
-void Add_Rear(LIST* LinkedList, int new_num) {
-	//char* new_sub[20]
+void Add_Rear(LIST* LinkedList, char* new_subject, int new_num) {
+	//char* new_sub
 	LIST* temp = LinkedList;
 
 	if (temp->score == NULL)
 	{
-		//strcpy(temp->subject, new_sub); //과목 추가
+		strcpy(temp->subject, new_subject); //과목 추가
 		temp->score = new_num; //점수 추가
 	}
 	else
@@ -159,10 +169,11 @@ void Add_Rear(LIST* LinkedList, int new_num) {
 		while (temp->next != NULL)
 		{
 			temp = temp->next;
-		}temp->next = Newnode;
+		}
+		temp->next = Newnode;
 		Newnode->next = NULL;
 
-		//strcpy(Newnode->subject new_sub); //과목 추가
+		strcpy(Newnode->subject, new_subject); //과목 추가
 		Newnode->score = new_num; //점수 추가
 	}
 }
@@ -170,10 +181,50 @@ void Print_All(LIST* LinkedList) {
 	LIST* temp = LinkedList;
 	while (temp)
 	{
-		printf("%d ", temp->score);
+		printf("%s %d\n", temp->subject, temp->score);
 		temp = temp->next;
 	}
 	printf("\n");
+}
+
+int Print_Search(LIST* LinkedList, char* search_sub) {
+	LIST* temp = LinkedList;
+	while (temp)
+	{
+		if (strcmp(temp->subject, search_sub) == 0) {
+			printf("내가 조회한 값 : %s %d\n", temp->subject, temp->score);
+		}
+		temp = temp->next;
+		printf("\n");
+	}
+}
+
+
+void Delete_Ren(LIST* LinkedList) {
+	LIST *temp1 = LinkedList; // 뒤따라서
+	LIST* temp2 = LinkedList->next; // 앞에
+	if (temp2 == NULL)
+	{
+		if (LinkedList->score == NULL) // 완전히 비어있는 경우
+		{
+			printf("삭제할 데이터가 없습니다.\n");
+		}
+		else //1개 입력되어있는 경우
+		{
+			strcpy(LinkedList->subject, "");
+			LinkedList->score = NULL;
+		}
+	}
+	else //노드가 2개 이상인 경우
+	{
+		while (temp2->next != NULL)
+		{
+			temp1 = temp1->next;
+			temp2 = temp2->next;
+		}
+	}
+	temp1->next = NULL;
+	free(temp2);
 }
 //void PrintPoint(POINT* p) {
 //	int y2;
